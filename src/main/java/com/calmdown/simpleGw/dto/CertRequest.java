@@ -1,6 +1,5 @@
 package com.calmdown.simpleGw.dto;
 
-import javax.validation.constraints.Digits;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
@@ -8,7 +7,7 @@ import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
 
 import com.calmdown.simpleGw.domain.MobileCarrier;
-import com.calmdown.simpleGw.domain.Order;
+import com.calmdown.simpleGw.domain.Orders;
 import com.calmdown.simpleGw.util.EnumPattern;
 
 import lombok.AccessLevel;
@@ -43,13 +42,13 @@ public class CertRequest {
     	this.payAmount = payAmount;
     }
     
-    public Order toEntity(String trxId, Long limitAmount) {
-    	return Order.builder()
-                .id(trxId)
+    public Orders toEntity(String trxid, Long limitAmount) {
+    	return Orders.builder()
+                .id(trxid)
                 .phone(phone)
                 .mobileCarrier(mobileCarrier)
                 .amount(payAmount)
-                .limitAmount(limitAmount)
+                .limitAmount(Math.toIntExact(limitAmount))
                 .build();
     }
 }

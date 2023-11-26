@@ -7,7 +7,7 @@ import lombok.RequiredArgsConstructor;
 
 @Getter
 @RequiredArgsConstructor
-public class UserException extends RuntimeException{
+public class RestApiException extends RuntimeException{
 	
 	private final ErrorCode errorCode;
 

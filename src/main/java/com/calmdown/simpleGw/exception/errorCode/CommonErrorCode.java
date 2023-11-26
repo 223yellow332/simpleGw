@@ -16,8 +16,7 @@ public enum CommonErrorCode implements ErrorCode{
     /*
      * 커스텀 에러코드
      */
-    INVALID_PAYMENT_ID(HttpStatus.BAD_REQUEST, "잘못된 통신사 거래번호입니다."),
-    LIMIT_AMOUNT_ERROR(HttpStatus.BAD_REQUEST, "한도 초과입니다.")
+    INVALID_PAYMENT_ID(HttpStatus.BAD_REQUEST, "잘못된 통신사 거래번호입니다.")
     ;
 
     private final HttpStatus httpStatus;

@@ -1,0 +1,24 @@
+= Simple Gateway API
+223yellow323
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 2
+:sectlinks:
+
+[[결제-인증-API]]
+== 결제 인증 API
+operation::gateway-controller-test/cert-success-test[snippets='http-request,http-response,request-fields,response-fields']
+
+[[결제-승인-API]]
+== 결제 승인 API
+operation::gateway-controller-test/auth-success-test[snippets='http-request,http-response,request-fields,response-fields']
+
+[[결제-취소-API]]
+== 결제 취소 API
+operation::gateway-controller-test/cancel-success-test[snippets='http-request,http-response,request-fields,response-fields']
+
+[[공통-코드]]
+== 공통 코드
+include::{snippets}/common/custom-response-fields-mobileCarrier.adoc[]

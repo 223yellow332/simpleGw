@@ -3,10 +3,10 @@ package com.calmdown.simpleGw.service;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.calmdown.simpleGw.domain.Order;
+import com.calmdown.simpleGw.domain.Orders;
 import com.calmdown.simpleGw.domain.OrderRepository;
 import com.calmdown.simpleGw.exception.errorCode.CommonErrorCode;
-import com.calmdown.simpleGw.exception.exception.UserException;
+import com.calmdown.simpleGw.exception.exception.RestApiException;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -20,13 +20,13 @@ public class OrderService {
 	private final OrderRepository orderRepository;
 	
 	@Transactional
-	public void save(Order order) {
-		log.info("Insert into Orders => " + order.toString());
-		orderRepository.save(order);
+	public Orders save(Orders orders) {
+		log.info("Insert into Orders => " + orders.toString());
+		return orderRepository.save(orders);
 	}
 	
-	public Order findById(String id) {
-		return orderRepository.findById(id).orElseThrow(() -> new UserException(CommonErrorCode.INVALID_PAYMENT_ID));
+	public Orders findById(String id) {
+		return orderRepository.findById(id).orElseThrow(() -> new RestApiException(CommonErrorCode.INVALID_PAYMENT_ID));
 	}
 
 }

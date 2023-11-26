@@ -1,7 +1,6 @@
 package com.calmdown.simpleGw.dto;
 
-import com.calmdown.simpleGw.domain.Order;
-
+import com.calmdown.simpleGw.domain.MobileCarrier;
 import com.calmdown.simpleGw.util.EnumPattern;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -17,6 +16,7 @@ import javax.validation.constraints.*;
 public class AuthRequest {
 
     @NotBlank(message = "거래번호 입력은 필수입니다.")
+    @Size(max = 50)
 	public String mobileTrxid;
 
     //휴대전화번호
@@ -27,14 +27,14 @@ public class AuthRequest {
 
     //통신사
     @EnumPattern(regexp = "SK|KT|LG", message = "통신사 형식이 잘못되었습니다.")
-    public String mobileCarrier;
+    public MobileCarrier mobileCarrier;
 
     @Positive(message = "결제금액은 1원 이상부터 가능합니다.")
     @Max(1000000)
     public int payAmount;
     
     @Builder
-    public AuthRequest(String mobileTrxid, String phone, String mobileCarrier, int payAmount) {
+    public AuthRequest(String mobileTrxid, String phone, MobileCarrier mobileCarrier, int payAmount) {
     	this.mobileTrxid = mobileTrxid;
     	this.phone = phone;
     	this.mobileCarrier = mobileCarrier;

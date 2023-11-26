@@ -1,5 +1,7 @@
 package com.calmdown.simpleGw.exception.handler;
 
+import java.io.IOException;
+import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -17,7 +19,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 
 import com.calmdown.simpleGw.exception.errorCode.CommonErrorCode;
 import com.calmdown.simpleGw.exception.errorCode.ErrorCode;
-import com.calmdown.simpleGw.exception.exception.UserException;
+import com.calmdown.simpleGw.exception.exception.RestApiException;
 import com.calmdown.simpleGw.exception.response.ErrorResponse;
 
 import lombok.extern.slf4j.Slf4j;
@@ -27,8 +29,8 @@ import lombok.extern.slf4j.Slf4j;
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
     // 사용자 정의 에러코드 처리
-    @ExceptionHandler(UserException.class)
-    public ResponseEntity<Object> handleCustomException(UserException e) {
+    @ExceptionHandler(RestApiException.class)
+    public ResponseEntity<Object> handleCustomException(RestApiException e) {
         return handleExceptionInternal(e.getErrorCode());
     }
 
