@@ -21,7 +21,6 @@ public class OrderService {
 	
 	@Transactional
 	public Orders save(Orders orders) {
-		log.info("Insert into Orders => " + orders.toString());
 		return orderRepository.save(orders);
 	}
 	

@@ -21,9 +21,6 @@ public class SecurityConfiguration {
 	@Value("${calmdown.simpleGw.http.auth-token-header.name}")
     private String principalRequestHeader;
  
-//    @Value("${appname.http.auth-token}")
-//    private String principalRequestValue;
- 
 	@Bean
     protected SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         APIKeyAuthFilter filter = new APIKeyAuthFilter(principalRequestHeader);
