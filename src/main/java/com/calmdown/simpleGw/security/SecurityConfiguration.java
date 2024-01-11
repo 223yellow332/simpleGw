@@ -11,6 +11,7 @@ import org.springframework.security.web.SecurityFilterChain;
 import com.calmdown.simpleGw.service.ShopService;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @RequiredArgsConstructor
 @Configuration
@@ -42,10 +43,16 @@ public class SecurityConfiguration {
                     .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .addFilter(filter)
-                    .authorizeRequests()
-                        .anyRequest()
-                            .authenticated()
-                .and().formLogin().disable();
+//                    .authorizeRequests()
+//                        .anyRequest()
+//                            .authenticated()
+                .authorizeHttpRequests(auth -> auth
+                        .requestMatchers(
+                                new AntPathRequestMatcher("/"),
+                                new AntPathRequestMatcher("/hello")
+                        ).permitAll()
+                        .anyRequest().authenticated())
+                .formLogin().disable();
         
         return http.build();
     }

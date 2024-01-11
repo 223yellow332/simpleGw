@@ -6,6 +6,7 @@ import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 import java.util.stream.Stream;
 
 import org.aspectj.lang.JoinPoint;
@@ -18,6 +19,7 @@ import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.CodeSignature;
 import org.aspectj.lang.reflect.MethodSignature;
+import org.slf4j.MDC;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -41,6 +43,9 @@ public class LoggingAspect {
 	
 	@Before("onRequest()")
 	public void beforeRequest(JoinPoint joinPoint) {
+		//MDC Tracing id Setting
+		MDC.put(LogConstant.TRACING_ID, UUID.randomUUID().toString());
+
 	    log.info("###Start request {}", joinPoint.getSignature().toShortString());
 	    Arrays.stream(joinPoint.getArgs())
 	            .map(Object::toString)
@@ -55,6 +60,9 @@ public class LoggingAspect {
 	    if (returnValue == null) return;
 
 	    log.info("\t{}", returnValue.toString());
+
+		// MDC Clear
+		MDC.clear();
 	}
 	
 	@AfterThrowing(pointcut = "onRequest()", throwing = "e")
