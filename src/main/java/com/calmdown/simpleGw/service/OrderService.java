@@ -4,7 +4,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.calmdown.simpleGw.domain.Orders;
-import com.calmdown.simpleGw.domain.OrderRepository;
+import com.calmdown.simpleGw.repository.OrderRepository;
 import com.calmdown.simpleGw.exception.errorCode.CommonErrorCode;
 import com.calmdown.simpleGw.exception.exception.RestApiException;
 

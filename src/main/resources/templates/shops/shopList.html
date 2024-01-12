@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header" />
+<body>
+
+<div class="container">
+  <div th:replace="fragments/bodyHeader :: bodyHeader" />
+  <div>
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>KEY</th>
+        <th>가맹점명</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="shop : ${shops}">
+        <td th:text="${shop.id}"></td>
+        <td th:text="${shop.key}"></td>
+        <td th:text="${shop.name}"></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div th:replace="fragments/footer :: footer" />
+
+</div> <!-- /container -->
+
+</body>
+</html>

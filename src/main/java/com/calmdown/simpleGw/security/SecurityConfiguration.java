@@ -49,7 +49,10 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(
                                 new AntPathRequestMatcher("/"),
-                                new AntPathRequestMatcher("/hello")
+                                new AntPathRequestMatcher("/v1/admin/**"),
+                                new AntPathRequestMatcher("/css/**"),
+                                new AntPathRequestMatcher("/js/**"),
+                                new AntPathRequestMatcher("/image/**")
                         ).permitAll()
                         .anyRequest().authenticated())
                 .formLogin().disable();

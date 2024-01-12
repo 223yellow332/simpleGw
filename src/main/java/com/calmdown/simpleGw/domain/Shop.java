@@ -18,4 +18,7 @@ public class Shop {
 	
 	@Column(name = "shop_secret_key")
 	private String key;
+
+	@Column
+	private String name;
 }
