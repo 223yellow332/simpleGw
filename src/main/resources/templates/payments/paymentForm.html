@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header" />
+<body>
+
+<div class="container">
+    <div th:replace="fragments/bodyHeader :: bodyHeader"/>
+
+    <form th:object="${form}" method="post">
+        <!-- id -->
+<!--        <input type="hidden" th:field="*{id}" />-->
+
+        <div class="form-group">
+            <label th:for="phone">휴대전화번대</label>
+            <input type="text" th:field="*{phone}" class="form-control" placeholder="휴대전화번호 입력하세요" />
+        </div>
+        <div class="form-group">
+            <label th:for="payAmount">결제금액</label>
+            <input type="number" th:field="*{payAmount}" class="form-control" placeholder="결제금액을 입력하세요" />
+        </div>
+        <div class="form-group">
+            <label th:for="author">통신사</label>
+            <input type="text" th:field="*{mobileCarrier}" class="form-control"  placeholder="통신사를 입력하세요" />
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+    <div th:replace="fragments/footer :: footer" />
+
+</div> <!-- /container -->
+
+</body>
+</html>

@@ -16,6 +16,7 @@
                 <th>생년월일</th>
                 <th>성별</th>
                 <th>한도금액</th>
+                <th></th>
             </tr>
             </thead>
             <tbody>
@@ -27,6 +28,10 @@
                 <td th:text="${member.socialNumber}"></td>
                 <td th:text="${member.gender}"></td>
                 <td th:text="${member.limitAmount}"></td>
+
+                <td>
+                    <a href="#" th:href="@{/v1/admin/payment/{id}/pay (id=${member.id})}" class="btn btn-primary" role="button">결제</a>
+                </td>
             </tr>
             </tbody>
         </table>

@@ -32,7 +32,10 @@ public class GatewayController {
 	static final int LIMIT_AMOUNT = 300000;
 	
 	private final OrderService orderService;
-	
+
+	/*
+	 * 인증
+	 */
 	@PostMapping("/cert")
 	public ResponseEntity<CommonResponse> cert (@Validated @RequestBody CertRequest request) throws Exception {
 
@@ -46,7 +49,10 @@ public class GatewayController {
 		
 		return new ResponseEntity<CommonResponse>(respMsg, HttpStatus.OK);
 	}
-	
+
+	/*
+	 * 결제
+	 */
 	@PostMapping("/auth")
 	public ResponseEntity<CommonResponse> auth (@Validated @RequestBody AuthRequest request) {
 
@@ -57,7 +63,10 @@ public class GatewayController {
 		
 		return new ResponseEntity<CommonResponse>(respMsg, HttpStatus.OK);
 	}
-	
+
+	/*
+	 * 취소
+	 */
 	@PostMapping("/cancel")
 	public ResponseEntity<CommonResponse> cancel (@Validated @RequestBody CancelRequest requestDto) {
 		

@@ -11,6 +11,8 @@ import com.calmdown.simpleGw.exception.exception.RestApiException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.List;
+
 @Slf4j
 @RequiredArgsConstructor
 @Service
@@ -26,6 +28,10 @@ public class OrderService {
 	
 	public Orders findById(String id) {
 		return orderRepository.findById(id).orElseThrow(() -> new RestApiException(CommonErrorCode.INVALID_PAYMENT_ID));
+	}
+
+	public List<Orders> findOrdersByPhone(String phone) {
+		return orderRepository.findByPhone(phone);
 	}
 
 }
